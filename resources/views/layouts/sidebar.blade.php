@@ -68,13 +68,13 @@
             <h4 class="brand-text font-weight-light">Account</h4>
         </a>
         <a href="#">Resent Activity</a>
-        <a href="#">All Expenses</a>
-        <a href="#">Friends</a>
+        <a href="list">All User</a>
+        <a href="account">Accounts</a>
         <a href="#">Contact</a>
     </div>
 
     <div id="main">
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Dashboared</span>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Dashboard</span>
         <center>
             <h2>Welcome to Dashboard</h2>
             <h3> {{ Auth::user()->name }}</h3>

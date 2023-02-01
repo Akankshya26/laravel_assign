@@ -30,7 +30,22 @@
                                 @endif
                             </div>
 
-
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" name="phone" class="form-control" placeholder="Phone"
+                                    value="{{ $users->phone }}" />
+                                @if ($errors->has('phone'))
+                                    <p class="text-danger">{{ $errors->first('phone') }}</p>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" name="address" class="form-control" placeholder="Address"
+                                    value="{{ $users->address }}" />
+                                @if ($errors->has('address'))
+                                    <p class="text-danger">{{ $errors->first('address') }}</p>
+                                @endif
+                            </div>
 
                             <div class="col-4 text-right">
                                 <button type="submit" class="btn btn-primary">Update</button>

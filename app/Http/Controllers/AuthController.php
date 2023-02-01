@@ -14,9 +14,10 @@ class AuthController extends Controller
 {
     public function index()
     {
-        $user = User::all();
-        $accounts = Account::all();
-        return view('auth.login', ['users' => $user, 'accounts' => $accounts]);
+
+        $users = User::all();
+        // $accounts = Account::all();
+        return view('auth.login', ['users' => $users]);
     }
 
     public function login(Request $request)
@@ -36,7 +37,8 @@ class AuthController extends Controller
     public function register_view()
     {
         $user = User::all();
-        return view('auth.register', ['users' => $user]);
+        $accounts = Account::all();
+        return view('auth.register', ['users' => $user, 'accounts' => $accounts]);
     }
     public function register(Request $request)
     {
@@ -49,8 +51,8 @@ class AuthController extends Controller
             'password' => 'required |min:8|confirmed',
         ]);
         //save in user table
-        $users = new User;
-        User::create([
+
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
@@ -59,11 +61,9 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
 
         ]);
-        $accountid = Account::find($request->account);
-        $users->account()->attach($accountid);
 
+        //$users->notify(new WelcomeMailNotification($users));
         return redirect('login')->with('success', 'register successfully');
-        // $users->notify(new WelcomeMailNotification($users));
         // return $users;
         //login user here
     }
@@ -79,8 +79,10 @@ class AuthController extends Controller
     }
     public function list()
     {
-        $user = User::all();
-        return view('layouts.list', ['users' => $user]);
+        // $user = User::all();
+        $users = auth()->user()->get();
+        return view('layouts.list', ['users' => $users]);
+        //dd($users);
     }
 
     public function edit($id)

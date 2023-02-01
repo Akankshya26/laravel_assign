@@ -5,17 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Account extends Model
+class Transaction extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id',
-        'name',
+        'account_id',
         'type',
-        'balance',
+        //'account_name',
+        'amount',
+        'date',
+        'catagory',
     ];
-    public function users()
+    public function accounts()
     {
-        return $this->belongsToMany(User::class, 'accounts_users');
+        return $this->hasMany(Account::class);
     }
 }

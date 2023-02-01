@@ -5,47 +5,46 @@
             <div class="col-md-4 offset-md-4">
                 <div class="card-form-holder">
                     <div class="card-body">
-                        <h1>Account Update</h1>
+                        <h1>Account Details</h1>
 
                         @if (Session::has('error'))
                             <p class="text-danger">{{ Session::get('error') }}</p>
                         @endif
-                        <form action="" method="post">
+                        <form action="{{ route('account') }}" method="post">
                             @csrf
-                            @method('Put')
+                            @method('post')
                             <div class="form-group">
-                                <label> Bank Name</label>
-                                <input type="text" name="bname" class="form-control" placeholder="bank name"
-                                    value="{{ $accounts->bname }}" />
-                                @if ($errors->has('bname'))
+                                <label> Account Name</label>
+                                <input type="text" name="name" class="form-control" placeholder="Account Name"
+                                    value="{{ $accounts->name }}" />
+                                @if ($errors->has('name'))
                                     <p class="text-danger">{{ $errors->first('bname') }}</p>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label>Account Number</label>
-                                <input type="text" name="acc_num" class="form-control" placeholder="Account Number"
-                                    value="{{ $accounts->acc_num }}" />
-                                @if ($errors->has('acc_num'))
-                                    <p class="text-danger">{{ $errors->first('acc_num') }}</p>
+                                <label>Type</label>
+                                <input type="text" name="type" class="form-control" placeholder="Type "
+                                    value="{{ $accounts->type }}" />
+                                @if ($errors->has('type'))
+                                    <p class="text-danger">{{ $errors->first('type') }}</p>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label>IFSC Code</label>
-                                <input type="text" name="ifsc" class="form-control" placeholder="ifsc"
-                                    value="{{ $accounts->ifsc }}" />
-                                @if ($errors->has('ifsc'))
-                                    <p class="text-danger">{{ $errors->first('ifsc') }}</p>
+                                <label>Balance</label>
+                                <input type="text" name="balance" class="form-control" placeholder="Balance"
+                                    value="{{ $accounts->balance }}" />
+                                @if ($errors->has('balance'))
+                                    <p class="text-danger">{{ $errors->first('balance') }}</p>
                                 @endif
                             </div>
 
                             <div class="col-4 text-right">
-                                <input type="submit" class="btn btn-primary" value="Edit" />
+                                <input type="submit" class="btn btn-primary" value="Submit" />
                             </div>
                     </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection

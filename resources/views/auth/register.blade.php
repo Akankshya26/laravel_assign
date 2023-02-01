@@ -41,13 +41,7 @@
                                     <p class="text-danger">{{ $errors->first('address') }}</p>
                                 @endif
                             </div>
-                            {{-- <div class="form-group">
-                                <label>Account Name</label>
-                                <input type="text" name="account_name" class="form-control" placeholder="Account Name" />
-                                @if ($errors->has('account_name'))
-                                    <p class="text-danger">{{ $errors->first('account_name') }}</p>
-                                @endif
-                            </div> --}}
+
                             <div class="form-group">
                                 <label>Password</label>
                                 <input type="password" name="password" class="form-control" placeholder="password" />

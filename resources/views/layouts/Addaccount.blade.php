@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <a href="{{ url('/addaccount') }}" class="btn btn-success btn-sm">Add Accounts</a>
-    <br><br>
-    {{-- <div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4">
                 <div class="card-form-holder">
@@ -17,8 +15,8 @@
                             @method('post')
                             <div class="form-group">
                                 <label> Account Name</label>
-                                <input type="text" name="bname" class="form-control" placeholder="Account Name" />
-                                @if ($errors->has('bname'))
+                                <input type="text" name="name" class="form-control" placeholder="Account Name" />
+                                @if ($errors->has('name'))
                                     <p class="text-danger">{{ $errors->first('bname') }}</p>
                                 @endif
                             </div>
@@ -45,32 +43,5 @@
                 </div>
             </div>
         </div>
-    </div> --}}
-    <br>
-    <div class="m-4">
-        <table class="table table-dark">
-
-            <tr>
-                <th>Account Name</th>
-                <th>type</th>
-                <th>Balance</th>
-                <th>Action</th>
-
-            </tr>
-
-
-
-            @foreach ($user as $users)
-                <tr>
-                    <td>{{ $users['name'] }}</td>
-                    <td>{{ $users['type'] }}</td>
-                    <td>{{ $users['balance'] }}</td>
-                    <td>
-                        <a href="{{ url('/accountedit', $users->id) }}" class="btn btn-info btn-sm">EDIT</a>
-                        <a href="{{ url('/delete', $users->id) }}" class="btn btn-danger btn-sm">DELETE</a>
-                        <a href="{{ url('/transaction') }}" class="btn btn-success btn-sm">Transaction</a>
-                    </td>
-                </tr>
-            @endforeach
     </div>
 @endsection
